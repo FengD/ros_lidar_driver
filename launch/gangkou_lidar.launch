@@ -1,0 +1,42 @@
+<launch>
+
+  <arg name="nodelet_manager" default="lidar_start_nodelet_manager"/>
+  <node pkg="nodelet"  type="nodelet" name="$(arg nodelet_manager)" args="manager" output="screen"/>
+
+  <node pkg="nodelet" type="nodelet" name="lidar199" args="load lidar_start/LidarStartNodelet $(arg nodelet_manager)"  output="screen">
+    <!-- LiDAR params -->
+    <param name="lidar_type" value="VLP16"/>
+    <param name="ip" value="195.0.0.199"/>
+    <param name="multicast_ip" value="239.0.0.1"/>
+    <param name="data_port" value="2366"/>
+    <param name="mode" value="0"/>
+    <!-- Topic Setting -->
+    <param name="frame_id" value="velodyne"/>
+    <param name="origin_cloud_topic" value="velodyne_points_left"/>
+  </node>
+
+  <node pkg="nodelet" type="nodelet" name="lidar200" args="load lidar_start/LidarStartNodelet $(arg nodelet_manager)"  output="screen">
+    <!-- LiDAR params -->
+    <param name="lidar_type" value="VLP16"/>
+    <param name="ip" value="195.0.0.200"/>
+    <param name="multicast_ip" value="239.0.0.1"/>
+    <param name="data_port" value="2367"/>
+    <param name="mode" value="0"/>
+    <!-- Topic Setting -->
+    <param name="frame_id" value="velodyne"/>
+    <param name="origin_cloud_topic" value="velodyne_points_upper"/>
+  </node>
+
+  <node pkg="nodelet" type="nodelet" name="lidar201" args="load lidar_start/LidarStartNodelet $(arg nodelet_manager)"  output="screen">
+    <!-- LiDAR params -->
+    <param name="lidar_type" value="VLP16"/>
+    <param name="ip" value="195.0.0.201"/>
+    <param name="multicast_ip" value="239.0.0.1"/>
+    <param name="data_port" value="2368"/>
+    <param name="mode" value="0"/>
+    <!-- Topic Setting -->
+    <param name="frame_id" value="velodyne"/>
+    <param name="origin_cloud_topic" value="velodyne_points_right"/>
+  </node>
+
+</launch>

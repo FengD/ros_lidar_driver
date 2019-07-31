@@ -1,0 +1,3 @@
+<library path="lib/liblidar_start_nodelet">
+  <class name="lidar_start/LidarStartNodelet" type="lidar_start::LidarStartNodelet" base_class_type="nodelet::Nodelet" />
+</library>

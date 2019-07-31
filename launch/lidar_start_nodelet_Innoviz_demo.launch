@@ -1,0 +1,16 @@
+<launch>
+
+  <arg name="nodelet_manager" default="lidar_start_nodelet_manager"/>
+  <node pkg="nodelet"  type="nodelet" name="$(arg nodelet_manager)" args="manager" output="screen"/>
+
+  <node pkg="nodelet" type="nodelet" name="LidarStartNodelet" args="load lidar_start/LidarStartNodelet $(arg nodelet_manager)"  output="screen">
+    <!-- LiDAR params -->
+    <param name="lidar_type" value="InnovizPro"/> <!-- P40P RSL32 VLP16 InnovizPro is now avaiable -->
+    <param name="ip" value="10.1.1.112"/>
+    <param name="data_port" value="8200"/>
+    <param name="innovizPro_correction_file_path" value="$(find lidar)/param/direction.csv"/>
+    <param name="frame_id" value="innoviz"/>
+    <param name="origin_cloud_topic" value="innoviz_points"/>
+  </node>
+
+</launch>
